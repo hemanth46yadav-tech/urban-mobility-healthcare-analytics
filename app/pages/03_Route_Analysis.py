@@ -22,7 +22,6 @@ from src.shared_ui import (
 )
 from src.route_analysis import find_shortest_route
 from src.visualizations import (
-    add_healthcare_markers_to_map,
     add_route_to_map,
     create_base_map,
 )
@@ -138,8 +137,6 @@ with map_c:
         orig_label=orig_choice if orig_choice != "Custom Coordinates" else "Origin",
         dest_label=dest_choice if dest_choice != "Custom Coordinates" else "Destination",
     )
-    if not healthcare.empty:
-        add_healthcare_markers_to_map(m, healthcare, marker_cluster=False)
 
     st_folium(m, width="100%", height=500, returned_objects=[])
 

@@ -190,16 +190,16 @@ def add_route_to_map(
     # Origin Marker (Green)
     folium.Marker(
         location=[orig_coords[0], orig_coords[1]],
-        popup=f"<b>{orig_label}</b><br>{orig_coords[0]:.4f}, {orig_coords[1]:.4f}",
-        tooltip=orig_label,
+        popup=f"<b>Origin: {orig_label}</b><br>{orig_coords[0]:.4f}° N, {orig_coords[1]:.4f}° E",
+        tooltip=f"Origin: {orig_label}",
         icon=folium.Icon(color="green", icon="play", prefix="fa"),
     ).add_to(m)
 
     # Destination Marker (Red)
     folium.Marker(
         location=[dest_coords[0], dest_coords[1]],
-        popup=f"<b>{dest_label}</b><br>{dest_coords[0]:.4f}, {dest_coords[1]:.4f}",
-        tooltip=dest_label,
+        popup=f"<b>Destination: {dest_label}</b><br>{dest_coords[0]:.4f}° N, {dest_coords[1]:.4f}° E",
+        tooltip=f"Destination: {dest_label}",
         icon=folium.Icon(color="red", icon="flag-checkered", prefix="fa"),
     ).add_to(m)
 
@@ -237,6 +237,18 @@ def add_route_to_map(
         opacity=0.7,
         tooltip=f"Straight Line: {route_result.get('straight_line_dist_meters')}m (Circuity: {route_result.get('circuity_factor')}x)",
     ).add_to(m)
+
+    # Fit map bounds to encompass the two locations and the route
+    all_lats = [orig_coords[0], dest_coords[0]]
+    all_lons = [orig_coords[1], dest_coords[1]]
+    if route_geom and isinstance(route_geom, LineString):
+        for lon, lat in route_geom.coords:
+            all_lats.append(lat)
+            all_lons.append(lon)
+    m.fit_bounds(
+        [[min(all_lats), min(all_lons)], [max(all_lats), max(all_lons)]],
+        padding=(30, 30),
+    )
 
     return m
 
