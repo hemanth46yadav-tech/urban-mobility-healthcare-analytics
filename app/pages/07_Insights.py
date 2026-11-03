@@ -20,10 +20,10 @@ from src.shared_ui import (
     render_metric_card,
 )
 
-st.set_page_config(page_title="Insights | Smart Yeshwanthpur", page_icon="💡", layout="wide")
+st.set_page_config(page_title="Insights | Smart Yeshwanthpur", layout="wide")
 apply_custom_styles()
 
-st.title("💡 Automated Spatial Insights & Policy Diagnostics")
+st.title("Automated Spatial Insights & Policy Diagnostics")
 st.markdown(
     "Dynamically derived analytical conclusions and urban planning insights computed directly from empirical OpenStreetMap data and spatial models."
 )
@@ -35,7 +35,7 @@ grid = data.get("grid")
 healthcare = data.get("healthcare")
 
 if grid.empty or roads.empty or not metrics:
-    st.error("⚠️ Datasets not loaded. Please run `python src/run_pipeline.py` first.")
+    st.error("Datasets not loaded. Please run `python src/run_pipeline.py` first.")
     st.stop()
 
 road_stats = metrics.get("road_statistics", {})
@@ -80,7 +80,7 @@ with i4:
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # SECTION 1: Automated Road Network Observations
-st.subheader("🛣️ Finding 1: Road Density & Network Disconnectivity")
+st.subheader("Finding 1: Road Density & Network Disconnectivity")
 c_r1, c_r2 = st.columns(2)
 
 with c_r1:
@@ -115,7 +115,7 @@ with c_r2:
 st.markdown("<br>", unsafe_allow_html=True)
 
 # SECTION 2: Top Structural Bottleneck Corridors
-st.subheader("🚨 Finding 2: Structural Bottleneck Links")
+st.subheader("Finding 2: Structural Bottleneck Links")
 st.caption("Road segments with the highest betweenness centrality index (bridging critical network sectors):")
 
 if not top_bottlenecks.empty:
@@ -123,13 +123,13 @@ if not top_bottlenecks.empty:
     b_table.columns = ["Corridor Name", "Classification", "Length (m)", "Design Speed (km/h)", "Betweenness Index"]
     st.dataframe(b_table.reset_index(drop=True), use_container_width=True)
     st.info(
-        "💡 **Planning Implication:** Disruptions or uncoordinated road works on these specific links trigger disproportionate network-wide delays across Yeshwanthpur."
+        "**Planning Implication:** Disruptions or uncoordinated road works on these specific links trigger disproportionate network-wide delays across Yeshwanthpur."
     )
 
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # SECTION 3: Healthcare Accessibility Disparities
-st.subheader("🏥 Finding 3: Healthcare Spatial Disparities & Service Deserts")
+st.subheader("Finding 3: Healthcare Spatial Disparities & Service Deserts")
 c_h1, c_h2 = st.columns(2)
 
 with c_h1:
@@ -165,7 +165,7 @@ with c_h2:
 st.markdown("<br>", unsafe_allow_html=True)
 
 # SECTION 4: Data-Driven Urban Policy Recommendations
-st.subheader("🎯 Data-Driven Smart City Recommendations")
+st.subheader("Data-Driven Smart City Recommendations")
 
 st.markdown(
     """

@@ -4,7 +4,7 @@ An end-to-end spatial data science, network topology, and multi-tier healthcare 
 
 ---
 
-## 📌 Project Executive Summary
+## Project Executive Summary
 
 This platform integrates OpenStreetMap drivable network graphs, verified healthcare facility infrastructure, metric spatial grid models, and unsupervised machine learning clustering into an interactive, multi-page **Streamlit & Folium GIS dashboard**.
 
@@ -17,7 +17,7 @@ This platform integrates OpenStreetMap drivable network graphs, verified healthc
 
 ---
 
-## 🏗️ System Architecture & Folder Structure
+## System Architecture & Folder Structure
 
 ```
 smart-yeshwanthpur-gis/
@@ -91,7 +91,7 @@ smart-yeshwanthpur-gis/
 
 ---
 
-## ⚡ Key Analytical Findings (Yeshwanthpur Baseline)
+## Key Analytical Findings (Yeshwanthpur Baseline)
 
 | Metric Category | Indicator | Computed Value | Description |
 |---|---|---|---|
@@ -114,7 +114,7 @@ smart-yeshwanthpur-gis/
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Core & Processing:** Python 3.12, GeoPandas, Pandas, NumPy, Shapely, PyProj, Pyogrio
 - **Network Analysis:** OSMnx, NetworkX, OpenStreetMap Overpass API
@@ -124,7 +124,7 @@ smart-yeshwanthpur-gis/
 
 ---
 
-## 🚀 Installation & Quickstart
+## Installation & Quickstart
 
 ### 1. Prerequisites
 Ensure Python 3.12 is installed and accessible in your system path.
@@ -152,7 +152,7 @@ The application will automatically open in your default browser at `http://local
 
 ---
 
-## 🧪 Automated Testing
+## Automated Testing
 
 Execute the comprehensive test suite verifying coordinates, geometries, road metrics, shortest-route algorithms, healthcare classifiers, and ML models:
 
@@ -167,7 +167,7 @@ Expected output:
 
 ---
 
-## 📐 Scientific Governance & Methodology Notes
+## Scientific Governance & Methodology Notes
 
 1. **Topological Centrality vs. Live Traffic:**
    Betweenness centrality is a purely structural graph metric reflecting bridging criticality. It identifies corridors where network disruptions cause the largest detours (e.g. Tumkur Road flyover approaches, railway yard perimeter roads). It must **not** be confused with empirical live probe congestion.
@@ -183,7 +183,7 @@ Expected output:
 
 ---
 
-## 📄 License & Attribution
+## License & Attribution
 - Road network and POI geometries © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors (ODbL).
 - Built for Bengaluru Smart City analytical and planning applications.
 

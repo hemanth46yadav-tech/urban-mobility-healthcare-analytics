@@ -27,10 +27,10 @@ from src.visualizations import (
     create_base_map,
 )
 
-st.set_page_config(page_title="Route Analysis | Smart Yeshwanthpur", page_icon="🧭", layout="wide")
+st.set_page_config(page_title="Route Analysis | Smart Yeshwanthpur", page_icon=None, layout="wide")
 apply_custom_styles()
 
-st.title("🧭 Shortest Route Analysis & Routing Engine")
+st.title("Shortest Route Analysis & Routing Engine")
 st.markdown(
     "Calculate Dijkstra optimal road network routes, travel times, and compare driving distance against Euclidean straight-line distance."
 )
@@ -40,7 +40,7 @@ healthcare = data.get("healthcare")
 graph = load_cached_graph()
 
 if graph is None:
-    st.error("⚠️ Road network graph not available. Please run `python src/run_pipeline.py` first.")
+    st.error("Road network graph not available. Please run `python src/run_pipeline.py` first.")
     st.stop()
 
 # Landmarks Presets
@@ -58,7 +58,7 @@ LANDMARKS = {
 if not healthcare.empty:
     hosp_df = healthcare[healthcare["facility_type"] == "Hospital"].head(5)
     for _, h in hosp_df.iterrows():
-        LANDMARKS[f"🏥 {h['facility_name']}"] = (float(h["latitude"]), float(h["longitude"]))
+        LANDMARKS[f"Hospital: {h['facility_name']}"] = (float(h["latitude"]), float(h["longitude"]))
 
 col_cfg1, col_cfg2, col_cfg3 = st.columns([4, 4, 2])
 
@@ -95,7 +95,7 @@ with col_cfg2:
 with col_cfg3:
     weight_type = st.radio("Optimization Metric:", ["Shortest Distance", "Quickest Time"])
     weight_param = "length" if weight_type == "Shortest Distance" else "travel_time"
-    calc_button = st.button("🚀 Calculate Route", use_container_width=True, type="primary")
+    calc_button = st.button("Calculate Route", use_container_width=True, type="primary")
 
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
@@ -108,7 +108,7 @@ except Exception as e:
     st.stop()
 
 if not route_res.get("success"):
-    st.warning(f"⚠️ {route_res.get('error', 'Could not find a route between the selected points.')}")
+    st.warning(f"{route_res.get('error', 'Could not find a route between the selected points.')}")
     st.stop()
 
 # Route KPIs
@@ -128,7 +128,7 @@ with r5:
 map_c, seg_c = st.columns([7, 3])
 
 with map_c:
-    st.subheader("🗺️ Shortest Path Visualization")
+    st.subheader("Shortest Path Visualization")
     m = create_base_map(center_lat=(orig_coords[0] + dest_coords[0]) / 2, center_lon=(orig_coords[1] + dest_coords[1]) / 2, zoom_start=14)
     add_route_to_map(
         m,
@@ -144,7 +144,7 @@ with map_c:
     st_folium(m, width="100%", height=500, returned_objects=[])
 
 with seg_c:
-    st.subheader("📋 Route Properties")
+    st.subheader("Route Properties")
     st.markdown(
         f"""
         - **From Node:** `{route_res.get('orig_node')}`
@@ -153,13 +153,12 @@ with seg_c:
         - **Speed Model:** Free-flow speeds based on Bangalore urban road classification standards (15–35 km/h).
         """
     )
-    st.info("💡 **Blue Solid Line:** Optimal driving route.\n**Orange Dashed Line:** Straight-line Euclidean connection.")
+    st.info("**Blue Solid Line:** Optimal driving route.\n**Orange Dashed Line:** Straight-line Euclidean connection.")
 
 # Turn-by-Turn Segment Breakdown Table
 if route_res.get("segments_table"):
-    st.subheader("🛣️ Step-by-Step Road Segments Breakdown")
+    st.subheader("Step-by-Step Road Segments Breakdown")
     seg_df = pd.DataFrame(route_res["segments_table"])
     display_cols = ["road_name", "road_category", "length_meters", "estimated_speed_kph", "travel_time_sec"]
     avail = [c for c in display_cols if c in seg_df.columns]
     st.dataframe(seg_df[avail], use_container_width=True)
-

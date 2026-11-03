@@ -31,10 +31,10 @@ from src.visualizations import (
     plot_pca_clusters,
 )
 
-st.set_page_config(page_title="Machine Learning | Smart Yeshwanthpur", page_icon="🤖", layout="wide")
+st.set_page_config(page_title="Machine Learning | Smart Yeshwanthpur", layout="wide")
 apply_custom_styles()
 
-st.title("🤖 Unsupervised Spatial Neighbourhood Clustering")
+st.title("Unsupervised Spatial Neighbourhood Clustering")
 st.markdown(
     "Multi-dimensional neighbourhood classification using K-Means, Elbow method, Silhouette scoring, and Principal Component Analysis (PCA)."
 )
@@ -51,7 +51,7 @@ eval_data = ml_data.get("evaluation", {})
 interpretations = ml_data.get("cluster_interpretations", {})
 
 if not ml_data:
-    st.error("⚠️ Clustering results not available. Please run `python src/run_pipeline.py`.")
+    st.error("Clustering results not available. Please run `python src/run_pipeline.py`.")
     st.stop()
 
 # Model Architecture KPIs
@@ -68,7 +68,7 @@ with k4:
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # SECTION 1: Spatial Cluster Map & Interpretations
-st.subheader("🗺️ Spatial Distribution of Neighbourhood Clusters")
+st.subheader("Spatial Distribution of Neighbourhood Clusters")
 
 c_map, c_desc = st.columns([7, 3])
 
@@ -102,7 +102,7 @@ with c_desc:
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # SECTION 2: Model Evaluation & PCA Projection
-st.subheader("📊 Clustering Evaluation & Dimensionality Reduction")
+st.subheader("Clustering Evaluation & Dimensionality Reduction")
 
 e_col1, e_col2 = st.columns(2)
 
@@ -116,7 +116,7 @@ with e_col2:
         st.plotly_chart(fig_sil, use_container_width=True)
 
 # PCA Scatter Plot
-st.subheader("🔬 2D PCA Cluster Projection")
+st.subheader("2D PCA Cluster Projection")
 st.caption(
     "Principal Component Analysis reduces multi-dimensional spatial features (Road Density, Intersection Density, Hospital Distance, Facilities Count, Accessibility Score) into 2 orthogonal axes."
 )
@@ -129,7 +129,7 @@ if not clusters_csv.empty:
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # Cluster Feature Comparison Table
-st.subheader("📋 Cluster Characteristics Comparison Table")
+st.subheader("Cluster Characteristics Comparison Table")
 if not clusters_csv.empty:
     feature_cols = [
         "road_density_km_sqkm",
@@ -142,11 +142,11 @@ if not clusters_csv.empty:
     cluster_means = clusters_csv.groupby("cluster_label")[avail_f].mean().round(2).reset_index()
     st.dataframe(cluster_means, use_container_width=True)
 
-st.subheader("📥 Export Cluster Assignments")
+st.subheader("Export Cluster Assignments")
 if not clusters_csv.empty:
     csv_str = clusters_csv.to_csv(index=False)
     st.download_button(
-        label="📊 Download Cluster Assignments (CSV)",
+        label="Download Cluster Assignments (CSV)",
         data=csv_str,
         file_name="yeshwanthpur_cluster_assignments.csv",
         mime="text/csv",

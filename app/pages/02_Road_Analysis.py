@@ -29,10 +29,10 @@ from src.visualizations import (
     plot_road_category_distribution,
 )
 
-st.set_page_config(page_title="Road Network | Smart Yeshwanthpur", page_icon="🛣️", layout="wide")
+st.set_page_config(page_title="Road Network | Smart Yeshwanthpur", page_icon=None, layout="wide")
 apply_custom_styles()
 
-st.title("🛣️ Road Network & Topological Analysis")
+st.title("Road Network & Topological Analysis")
 st.markdown(
     "Structural analysis of Yeshwanthpur's drivable street network, road classification hierarchy, and network centrality."
 )
@@ -63,7 +63,7 @@ with c5:
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # Filters & Map Controls
-st.subheader("🔍 Road Network Hierarchy & Interactive Map")
+st.subheader("Road Network Hierarchy & Interactive Map")
 
 f_col1, f_col2 = st.columns([7, 3])
 
@@ -78,7 +78,7 @@ with f_col1:
 
 with f_col2:
     highlight_bottlenecks = st.checkbox(
-        "🚨 Highlight Structural Bottlenecks (Top 5% Betweenness)",
+        "Highlight Structural Bottlenecks (Top 5% Betweenness)",
         value=True,
     )
 
@@ -110,7 +110,7 @@ with stats_col:
 
     st.markdown("#### Centrality Distribution")
     st.info(
-        "⚠️ **Note:** Structural betweenness centrality measures topological bridging importance. It indicates critical routing corridors, not actual live vehicle density."
+        "**Note:** Structural betweenness centrality measures topological bridging importance. It indicates critical routing corridors, not actual live vehicle density."
     )
 
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
@@ -119,13 +119,13 @@ st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 ch1, ch2 = st.columns(2)
 
 with ch1:
-    st.subheader("📊 Road Hierarchy Distribution")
+    st.subheader("Road Hierarchy Distribution")
     if not roads.empty:
         fig_bar = plot_road_category_distribution(roads)
         st.plotly_chart(fig_bar, use_container_width=True)
 
 with ch2:
-    st.subheader("📈 Segment Length vs Travel Time Distribution")
+    st.subheader("Segment Length vs Travel Time Distribution")
     if not roads.empty:
         fig_hist = px.histogram(
             roads,
@@ -140,7 +140,7 @@ with ch2:
 
 # Bottleneck Corridor Inspection Table
 if not roads.empty and "is_bottleneck_corridor" in roads.columns:
-    st.subheader("🚨 Identified Critical Structural Corridors")
+    st.subheader("Identified Critical Structural Corridors")
     st.caption("Road segments whose removal or obstruction would cause the largest detour circuity.")
     bottlenecks = roads[roads["is_bottleneck_corridor"]].copy()
     display_cols = [
@@ -154,7 +154,6 @@ if not roads.empty and "is_bottleneck_corridor" in roads.columns:
     sorted_bn = bottlenecks[avail_cols].sort_values(by="edge_betweenness", ascending=False).head(20)
     st.dataframe(sorted_bn, use_container_width=True)
 
-st.subheader("📥 Export Road Network Dataset")
+st.subheader("Export Road Network Dataset")
 if not filtered_roads.empty:
     render_download_buttons(filtered_roads, "yeshwanthpur_roads_filtered", "Road Dataset")
-

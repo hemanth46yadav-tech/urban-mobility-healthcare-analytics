@@ -29,7 +29,7 @@ from src.visualizations import (
 
 st.set_page_config(
     page_title="Smart Yeshwanthpur GIS Analytics",
-    page_icon="🗺️",
+    page_icon=None,
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -51,12 +51,12 @@ with st.sidebar:
         
         ---
         **Modules:**
-        - 🛣️ Road Network & Topology
-        - 🧭 Dijkstra Shortest Routes
-        - 🏥 Healthcare Facilities
-        - 🎯 Spatial Accessibility Grid
-        - 🤖 K-Means ML Classification
-        - 💡 Data-Driven Insights
+        - Road Network & Topology
+        - Dijkstra Shortest Routes
+        - Healthcare Facilities
+        - Spatial Accessibility Grid
+        - K-Means ML Classification
+        - Data-Driven Insights
         ---
         """
     )
@@ -86,7 +86,7 @@ grid = data.get("grid")
 
 if not metrics:
     st.error(
-        "⚠️ Analytical datasets not detected. Please run `python src/run_pipeline.py` to initialize data."
+        "Analytical datasets not detected. Please run `python src/run_pipeline.py` to initialize data."
     )
     st.stop()
 
@@ -135,7 +135,7 @@ st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 col_map, col_info = st.columns([7, 3])
 
 with col_map:
-    st.subheader("📍 Interactive Study Area Overview")
+    st.subheader("Interactive Study Area Overview")
     st.caption(
         "Showing study area buffer (2.5 km radius around Yeshwanthpur: 13.0285° N, 77.5400° E), road hierarchy, and healthcare locations."
     )
@@ -151,7 +151,7 @@ with col_map:
     st_folium(m, width="100%", height=500, returned_objects=[])
 
 with col_info:
-    st.subheader("📋 Analytical Scope")
+    st.subheader("Analytical Scope")
     st.markdown(
         """
         - **Study Center:** Yeshwanthpur Junction (13.0285° N, 77.5400° E)
@@ -164,12 +164,11 @@ with col_info:
     )
 
     st.info(
-        "💡 **Navigation Tip:** Use the sidebar menu to explore dedicated analytical modules including Shortest Routes, Topology Centrality, and Machine Learning Clustering."
+        "**Navigation Tip:** Use the sidebar menu to explore dedicated analytical modules including Shortest Routes, Topology Centrality, and Machine Learning Clustering."
     )
 
-    st.subheader("💾 Export Datasets")
+    st.subheader("Export Datasets")
     if not healthcare.empty:
         render_download_buttons(
             healthcare, "yeshwanthpur_healthcare_facilities", "Healthcare Layer"
         )
-

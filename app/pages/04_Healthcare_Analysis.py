@@ -28,10 +28,10 @@ from src.visualizations import (
     create_base_map,
 )
 
-st.set_page_config(page_title="Healthcare Analysis | Smart Yeshwanthpur", page_icon="🏥", layout="wide")
+st.set_page_config(page_title="Healthcare Analysis | Smart Yeshwanthpur", layout="wide")
 apply_custom_styles()
 
-st.title("🏥 Healthcare Infrastructure & Facility Analysis")
+st.title("Healthcare Infrastructure & Facility Analysis")
 st.markdown(
     "Geospatial distribution, categorization, and Euclidean service radius analysis of healthcare amenities across Yeshwanthpur."
 )
@@ -42,7 +42,7 @@ boundary = data.get("boundary")
 healthcare = data.get("healthcare")
 
 if healthcare.empty:
-    st.error("⚠️ Healthcare dataset is empty. Run `python src/run_pipeline.py` to acquire data.")
+    st.error("Healthcare dataset is empty. Run `python src/run_pipeline.py` to acquire data.")
     st.stop()
 
 hc_stats = metrics.get("healthcare_statistics", {})
@@ -69,7 +69,7 @@ with f_col1:
     selected_type = st.selectbox("Filter by Facility Category:", options=all_types, index=0)
 
 with f_col2:
-    search_query = st.text_input("🔍 Search Facility Name or Address:", value="")
+    search_query = st.text_input("Search Facility Name or Address:", value="")
 
 with f_col3:
     show_buffers = st.checkbox("Show 1 km Hospital Buffers", value=True)
@@ -90,7 +90,7 @@ if search_query.strip():
 map_c, chart_c = st.columns([7, 3])
 
 with map_c:
-    st.subheader("📍 Healthcare Geospatial Map")
+    st.subheader("Healthcare Geospatial Map")
     m = create_base_map(zoom_start=14)
     if not boundary.empty:
         add_study_boundary_to_map(m, boundary)
@@ -117,7 +117,7 @@ with map_c:
     st_folium(m, width="100%", height=500, returned_objects=[])
 
 with chart_c:
-    st.subheader("📊 Category Distribution")
+    st.subheader("Category Distribution")
     type_counts = healthcare["facility_type"].value_counts().reset_index()
     type_counts.columns = ["Facility Type", "Count"]
 
@@ -136,13 +136,13 @@ with chart_c:
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # Facility Directory Table
-st.subheader("📋 Healthcare Facilities Directory")
+st.subheader("Healthcare Facilities Directory")
 st.caption(f"Displaying {len(filtered_hc)} matching facilities in Yeshwanthpur.")
 
 table_cols = ["facility_name", "facility_type", "latitude", "longitude", "address"]
 avail_cols = [c for c in table_cols if c in filtered_hc.columns]
 st.dataframe(filtered_hc[avail_cols].reset_index(drop=True), use_container_width=True, height=280)
 
-st.subheader("📥 Export Healthcare Facility Data")
+st.subheader("Export Healthcare Facility Data")
 render_download_buttons(filtered_hc, "yeshwanthpur_healthcare_filtered", "Healthcare Facilities")
 

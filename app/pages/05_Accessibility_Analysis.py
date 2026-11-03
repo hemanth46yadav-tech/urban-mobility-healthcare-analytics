@@ -31,10 +31,10 @@ from src.visualizations import (
     plot_accessibility_bands,
 )
 
-st.set_page_config(page_title="Accessibility Analysis | Smart Yeshwanthpur", page_icon="🎯", layout="wide")
+st.set_page_config(page_title="Accessibility Analysis | Smart Yeshwanthpur", layout="wide")
 apply_custom_styles()
 
-st.title("🎯 Healthcare Accessibility & Spatial Grid Analysis")
+st.title("Healthcare Accessibility & Spatial Grid Analysis")
 st.markdown(
     "Multi-tier accessibility classifications, population-weighted coverage, and service deficit hotspot detection."
 )
@@ -64,7 +64,7 @@ with k5:
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # SECTION 1: Interactive Nearest Healthcare Facility Finder
-st.subheader("🔍 Nearest Healthcare Facility Finder")
+st.subheader("Nearest Healthcare Facility Finder")
 st.caption("Select or input any location in Yeshwanthpur to compute driving distance, Euclidean distance, and travel time to the closest healthcare center.")
 
 c_in1, c_in2, c_in3, c_in4 = st.columns([3, 3, 3, 2])
@@ -92,7 +92,7 @@ with c_in2:
 
 with c_in3:
     st.markdown("<br>", unsafe_allow_html=True)
-    find_btn = st.button("🔎 Locate Nearest Facility", type="primary", use_container_width=True)
+    find_btn = st.button("Locate Nearest Facility", type="primary", use_container_width=True)
 
 # Run Query
 if find_btn or origin_preset != "Custom Coordinates":
@@ -120,7 +120,7 @@ if find_btn or origin_preset != "Custom Coordinates":
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # SECTION 2: Spatial Grid Choropleth Map
-st.subheader("🗺️ Spatial Grid Accessibility Choropleth")
+st.subheader("Spatial Grid Accessibility Choropleth")
 
 map_opt_col, leg_col = st.columns([7, 3])
 
@@ -146,10 +146,10 @@ with leg_col:
     st.markdown("#### Analytical Legend")
     st.markdown(
         """
-        - 🟢 **High Accessibility (< 1 km):** Optimal emergency response zone.
-        - 🟡 **Moderate Accessibility (1–2 km):** Standard urban travel buffer.
-        - 🟠 **Low Accessibility (2–3 km):** Noticeable travel detour.
-        - 🔴 **Very Low Accessibility (> 3 km):** Service deficit zone.
+        - **High Accessibility (< 1 km):** Optimal emergency response zone.
+        - **Moderate Accessibility (1–2 km):** Standard urban travel buffer.
+        - **Low Accessibility (2–3 km):** Noticeable travel detour.
+        - **Very Low Accessibility (> 3 km):** Service deficit zone.
         """
     )
     if not grid.empty:
@@ -159,7 +159,7 @@ with leg_col:
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # SECTION 3: Service Deficit Hotspot Identification
-st.subheader("⚠️ Priority Service Deficit Areas (Candidate Expansion Zones)")
+st.subheader("Priority Service Deficit Areas (Candidate Expansion Zones)")
 st.caption(
     "Spatial cells located farthest from emergency hospital care while possessing viable road density and residential population."
 )
@@ -179,7 +179,7 @@ if not deficit_cells.empty:
     avail_d = [c for c in d_cols if c in deficit_cells.columns]
     st.dataframe(deficit_cells[avail_d].reset_index(drop=True), use_container_width=True)
 
-st.subheader("📥 Export Accessibility Grid")
+st.subheader("Export Accessibility Grid")
 if not grid.empty:
     render_download_buttons(grid, "yeshwanthpur_spatial_accessibility_grid", "Accessibility Grid")
 

@@ -29,10 +29,10 @@ from src.visualizations import (
     plot_road_category_distribution,
 )
 
-st.set_page_config(page_title="Overview | Smart Yeshwanthpur", page_icon="🗺️", layout="wide")
+st.set_page_config(page_title="Overview | Smart Yeshwanthpur", page_icon=None, layout="wide")
 apply_custom_styles()
 
-st.title("🗺️ Overview & Study Area Profile")
+st.title("Overview & Study Area Profile")
 st.markdown(
     "High-level geographical synthesis of Yeshwanthpur's transportation network and healthcare infrastructure."
 )
@@ -104,7 +104,7 @@ with c_col:
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # Project Scope & Methodology Summary
-st.subheader("📌 Project Context & Technical Governance")
+st.subheader("Project Context & Technical Governance")
 c_left, c_right = st.columns(2)
 
 with c_left:
@@ -127,7 +127,6 @@ with c_right:
         """
     )
 
-st.subheader("📥 Export Summary Datasets")
+st.subheader("Export Summary Datasets")
 if not grid.empty:
     render_download_buttons(grid, "yeshwanthpur_accessibility_grid", "Spatial Grid")
-

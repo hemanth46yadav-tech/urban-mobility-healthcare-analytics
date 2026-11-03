@@ -210,7 +210,7 @@ def render_download_buttons(
     with col1:
         geojson_str = gdf.to_json()
         st.download_button(
-            label=f"📥 {label_prefix} (GeoJSON)",
+            label=f"{label_prefix} (GeoJSON)",
             data=geojson_str,
             file_name=f"{base_filename}.geojson",
             mime="application/geo+json",
@@ -220,7 +220,7 @@ def render_download_buttons(
         df_export = pd.DataFrame(gdf.drop(columns=["geometry"], errors="ignore"))
         csv_str = df_export.to_csv(index=False)
         st.download_button(
-            label=f"📊 {label_prefix} (CSV)",
+            label=f"{label_prefix} (CSV)",
             data=csv_str,
             file_name=f"{base_filename}.csv",
             mime="text/csv",
