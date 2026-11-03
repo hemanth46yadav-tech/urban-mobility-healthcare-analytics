@@ -182,3 +182,4 @@ def load_json(filepath: Path) -> Dict[str, Any]:
     except Exception as e:
         logger.error(f"Failed to read JSON from {filepath}: {e}")
         return {}
+

@@ -219,3 +219,4 @@ def run_neighborhood_clustering(
         f"Clustering successfully completed: {chosen_k} clusters identified, PCA variance {pca_total_variance*100:.1f}%."
     )
     return df, results_summary
+

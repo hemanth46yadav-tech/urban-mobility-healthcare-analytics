@@ -38,3 +38,4 @@ def test_validate_geodataframe_removes_invalid():
     assert len(cleaned) == 2  # p1 and repaired bowtie
     assert all(geom.is_valid for geom in cleaned.geometry)
     assert not any(geom.is_empty for geom in cleaned.geometry)
+

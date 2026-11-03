@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from app.shared import (
+from src.shared_ui import (
     apply_custom_styles,
     load_cached_datasets,
     render_download_buttons,
@@ -145,3 +145,4 @@ st.dataframe(filtered_hc[avail_cols].reset_index(drop=True), use_container_width
 
 st.subheader("📥 Export Healthcare Facility Data")
 render_download_buttons(filtered_hc, "yeshwanthpur_healthcare_filtered", "Healthcare Facilities")
+

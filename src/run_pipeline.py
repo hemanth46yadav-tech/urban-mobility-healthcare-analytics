@@ -151,3 +151,4 @@ def run_full_pipeline(force_download: bool = False):
 
 if __name__ == "__main__":
     run_full_pipeline()
+

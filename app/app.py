@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from app.shared import (
+from src.shared_ui import (
     apply_custom_styles,
     load_cached_datasets,
     render_download_buttons,
@@ -172,3 +172,4 @@ with col_info:
         render_download_buttons(
             healthcare, "yeshwanthpur_healthcare_facilities", "Healthcare Layer"
         )
+

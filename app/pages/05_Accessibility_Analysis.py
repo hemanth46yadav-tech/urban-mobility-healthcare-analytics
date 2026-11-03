@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from app.shared import (
+from src.shared_ui import (
     apply_custom_styles,
     load_cached_datasets,
     load_cached_graph,
@@ -182,3 +182,4 @@ if not deficit_cells.empty:
 st.subheader("📥 Export Accessibility Grid")
 if not grid.empty:
     render_download_buttons(grid, "yeshwanthpur_spatial_accessibility_grid", "Accessibility Grid")
+

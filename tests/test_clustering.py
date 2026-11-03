@@ -52,3 +52,4 @@ def test_clustering_on_grid():
     assert "pca_2" in df_clustered.columns
     assert df_clustered["cluster"].nunique() == 4
     assert len(summary["cluster_interpretations"]) == 4
+

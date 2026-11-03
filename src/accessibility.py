@@ -173,3 +173,4 @@ def get_accessibility_metrics_summary(grid_gdf: gpd.GeoDataFrame) -> Dict[str, A
     }
 
     return summary
+

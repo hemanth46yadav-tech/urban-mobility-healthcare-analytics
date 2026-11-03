@@ -79,3 +79,4 @@ def test_metrics_json_structure():
 
     assert data["road_statistics"]["total_segments"] > 1000
     assert data["healthcare_statistics"]["total_facilities"] > 10
+

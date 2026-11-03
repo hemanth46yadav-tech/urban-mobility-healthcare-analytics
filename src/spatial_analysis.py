@@ -308,3 +308,4 @@ def overlay_and_aggregate_grid(
     grid_final = grid_proj.to_crs(CRS_GEOGRAPHIC)
     logger.info("Grid spatial aggregation successfully completed.")
     return grid_final
+

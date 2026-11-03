@@ -123,3 +123,4 @@ SPEED_ASSUMPTIONS_KMH = {
     "service": 10.0,
     "default": 20.0,
 }
+

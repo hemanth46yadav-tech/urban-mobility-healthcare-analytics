@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from app.shared import (
+from src.shared_ui import (
     apply_custom_styles,
     load_cached_datasets,
     load_cached_graph,
@@ -162,3 +162,4 @@ if route_res.get("segments_table"):
     display_cols = ["road_name", "road_category", "length_meters", "estimated_speed_kph", "travel_time_sec"]
     avail = [c for c in display_cols if c in seg_df.columns]
     st.dataframe(seg_df[avail], use_container_width=True)
+

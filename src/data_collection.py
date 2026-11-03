@@ -229,3 +229,4 @@ def fetch_healthcare_facilities(
     raise RuntimeError(
         f"Failed to fetch healthcare facilities after {max_retries} attempts: {last_exception}"
     )
+

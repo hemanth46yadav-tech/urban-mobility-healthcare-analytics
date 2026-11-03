@@ -71,3 +71,4 @@ def test_shortest_route_on_loaded_graph():
     assert len(res["path_nodes"]) >= 2
     assert res["route_geometry"] is not None
     assert res["travel_time_min"] > 0
+

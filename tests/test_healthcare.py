@@ -60,3 +60,4 @@ def test_facility_summary():
     assert summary["num_hospitals"] >= 0
     assert summary["num_clinics"] >= 0
     assert isinstance(summary["breakdown"], dict)
+

@@ -216,3 +216,4 @@ def calculate_centrality(
         f"Centrality completed: {summary['num_bottleneck_segments']} structural bottleneck segments identified."
     )
     return nodes, roads, summary
+

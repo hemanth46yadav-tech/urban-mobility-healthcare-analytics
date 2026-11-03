@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from app.shared import (
+from src.shared_ui import (
     apply_custom_styles,
     load_cached_datasets,
     render_download_buttons,
@@ -130,3 +130,4 @@ with c_right:
 st.subheader("📥 Export Summary Datasets")
 if not grid.empty:
     render_download_buttons(grid, "yeshwanthpur_accessibility_grid", "Spatial Grid")
+

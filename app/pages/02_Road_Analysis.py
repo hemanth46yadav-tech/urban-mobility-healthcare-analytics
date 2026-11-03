@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from app.shared import (
+from src.shared_ui import (
     apply_custom_styles,
     load_cached_datasets,
     render_download_buttons,
@@ -157,3 +157,4 @@ if not roads.empty and "is_bottleneck_corridor" in roads.columns:
 st.subheader("📥 Export Road Network Dataset")
 if not filtered_roads.empty:
     render_download_buttons(filtered_roads, "yeshwanthpur_roads_filtered", "Road Dataset")
+
