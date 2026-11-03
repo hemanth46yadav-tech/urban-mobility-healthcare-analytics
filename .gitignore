@@ -17,6 +17,9 @@ ENV/
 # Streamlit
 .streamlit/
 
+# OSMnx Cache
+cache/
+
 # OS specific
 .DS_Store
 Thumbs.db
