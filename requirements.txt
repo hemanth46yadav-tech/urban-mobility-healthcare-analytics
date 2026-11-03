@@ -1,0 +1,16 @@
+streamlit>=1.35.0
+folium>=0.16.0
+streamlit-folium>=0.20.0
+plotly>=5.20.0
+geopandas>=1.0.0
+osmnx>=2.0.0
+networkx>=3.0
+scikit-learn>=1.4.0
+scipy>=1.12.0
+matplotlib>=3.8.0
+pandas>=2.2.0
+numpy>=1.26.0
+shapely>=2.0.0
+pyproj>=3.6.0
+pyogrio>=0.8.0
+pytest>=8.0.0

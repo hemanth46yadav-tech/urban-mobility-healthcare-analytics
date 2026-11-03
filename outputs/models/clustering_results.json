@@ -1,0 +1,87 @@
+{
+  "n_clusters": 4,
+  "features": [
+    "road_density_km_sqkm",
+    "intersection_density_per_sqkm",
+    "nearest_hosp_dist_m",
+    "total_healthcare_count",
+    "accessibility_score"
+  ],
+  "evaluation": {
+    "k_values": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "inertias": [
+      1128.88,
+      764.12,
+      556.34,
+      485.99,
+      419.74,
+      363.23
+    ],
+    "silhouette_scores": [
+      0.347,
+      0.384,
+      0.384,
+      0.392,
+      0.369,
+      0.354
+    ],
+    "recommended_k": 5,
+    "best_silhouette": 0.392
+  },
+  "cluster_counts": {
+    "1": 131,
+    "3": 102,
+    "0": 69,
+    "2": 42
+  },
+  "pca_explained_variance_ratio": [
+    0.551,
+    0.283
+  ],
+  "pca_total_variance": 0.834,
+  "cluster_interpretations": {
+    "0": {
+      "label": "Dense Mixed-Use / Transit Corridor",
+      "description": "High road & intersection density with good connectivity and moderate hospital travel time.",
+      "color": "#2980b9",
+      "mean_road_density": 14.34,
+      "mean_hosp_distance_m": 949.4,
+      "mean_facilities": 0.0,
+      "mean_accessibility_score": 56.1
+    },
+    "1": {
+      "label": "Dense Mixed-Use / Transit Corridor",
+      "description": "High road & intersection density with good connectivity and moderate hospital travel time.",
+      "color": "#2980b9",
+      "mean_road_density": 23.73,
+      "mean_hosp_distance_m": 416.6,
+      "mean_facilities": 0.02,
+      "mean_accessibility_score": 71.0
+    },
+    "2": {
+      "label": "Healthcare & Urban Core",
+      "description": "High road density, multiple local facilities, and immediate hospital proximity.",
+      "color": "#27ae60",
+      "mean_road_density": 53.14,
+      "mean_hosp_distance_m": 178.0,
+      "mean_facilities": 1.43,
+      "mean_accessibility_score": 90.0
+    },
+    "3": {
+      "label": "Dense Mixed-Use / Transit Corridor",
+      "description": "High road & intersection density with good connectivity and moderate hospital travel time.",
+      "color": "#2980b9",
+      "mean_road_density": 69.46,
+      "mean_hosp_distance_m": 545.1,
+      "mean_facilities": 0.0,
+      "mean_accessibility_score": 70.7
+    }
+  }
+}
