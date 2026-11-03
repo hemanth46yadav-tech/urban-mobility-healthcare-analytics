@@ -20,7 +20,10 @@ ENV/
 # OSMnx Cache
 cache/
 
-# OS specific
+# Matplotlib Cache
+.mpl_cache/
+outputs/.mpl_cache/
+
 .DS_Store
 Thumbs.db
 
